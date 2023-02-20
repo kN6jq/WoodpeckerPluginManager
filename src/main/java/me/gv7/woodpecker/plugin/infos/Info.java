@@ -21,6 +21,7 @@ public class Info implements InfoDetector {
 
     @Override
     public LinkedHashMap<String, String> doDetect(ITarget target, Map<String, Object> customArgs, IResultOutput resultOutput) throws Throwable {
-        return null;
+        LinkedHashMap<String,String> infos = new LinkedHashMap<String, String>();
+        return infos;
     }
 }
