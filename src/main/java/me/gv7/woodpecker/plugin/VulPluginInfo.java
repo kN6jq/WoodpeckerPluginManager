@@ -8,31 +8,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VulPluginInfo implements IVulPlugin{
-
     public static IVulPluginCallbacks callbacks;
     public static IPluginHelper pluginHelper;
+
     @Override
-    public void VulPluginMain(IVulPluginCallbacks vulPluginCallbacks) {
-        callbacks = vulPluginCallbacks;
-        pluginHelper = vulPluginCallbacks.getPluginHelper();
-        // 填写漏洞模块的信息
-        callbacks.setVulPluginName("插件名称");
-        callbacks.setVulPluginAuthor("Xm17");
-        callbacks.setVulPluginVersion("0.0.1");
-        callbacks.setVulName("漏洞名称");
-        callbacks.setVulSeverity(vulPluginCallbacks.VUL_CATEGORY_RCE);
-        callbacks.setVulProduct("产品");
-        // 这里开始注册Exploit模块，Exploit模块的作用为对漏洞发起攻击
-        List<IExploit> exploitList = new ArrayList<>();
-        exploitList.add(new Exploit());
-        callbacks.registerExploit(exploitList);
+    public void VulPluginMain(IVulPluginCallbacks iVulPluginCallbacks) {
+        this.callbacks = iVulPluginCallbacks;
+        this.pluginHelper = iVulPluginCallbacks.getPluginHelper();
+        iVulPluginCallbacks.setVulName("vul插件");
+        iVulPluginCallbacks.setVulPluginAuthor("Xm17");
+        iVulPluginCallbacks.setVulPluginVersion("0.0.1");
+        iVulPluginCallbacks.setVulProduct("vul插件产品");
+        iVulPluginCallbacks.setVulDescription("vul插件描述");
 
-        // 注册Poc 做多个网址漏洞检测用
-        callbacks.registerPoc(new Poc());
 
-        // 注册Payload 模块的作用是exploit模块打不了，使用payload模块生成payload，然后进行手工利用
-        List<IPayloadGenerator> payloads = new ArrayList<>();
-        payloads.add(new Payload());
-        callbacks.registerPayloadGenerator(payloads);
+        // 注册漏洞利用插件
+        iVulPluginCallbacks.registerExploit(new ArrayList<IExploit>(){{
+            add(new Exploit());
+        }});
+
+        // 注册漏洞检测插件
+        iVulPluginCallbacks.registerPoc(new Poc());
+
+        // 注册payload生成插件
+        iVulPluginCallbacks.registerPayloadGenerator(new ArrayList<IPayloadGenerator>(){{
+            add(new Payload());
+        }});
     }
 }

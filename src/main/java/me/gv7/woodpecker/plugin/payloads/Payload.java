@@ -6,13 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * payload模块
+ */
 public class Payload implements IPayloadGenerator {
 
     // payload 模块的作用是exploit模块打不了，使用payload模块生成payload，然后进行手工利用
 
     @Override
     public String getPayloadTabCaption() {
-        return "payload模块的tab标签名";
+        return "payload标签栏中的名称";
     }
 
     @Override

@@ -6,24 +6,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InfoPluginInfo implements InfoDetectorPlugin{
+    public static InfoDetectorPluginCallbacks callbacks;
+    public static IPluginHelper pluginHelper;
 
-
-
-    // 信息探测接口，插件通过实现该接口，可实现对目标全方位信息探测。
     @Override
-    public void InfoDetectorPluginMain(InfoDetectorPluginCallbacks callbacks) {
+    public void InfoDetectorPluginMain(InfoDetectorPluginCallbacks infoDetectorPluginCallbacks) {
+        this.callbacks = infoDetectorPluginCallbacks;
+        this.pluginHelper = infoDetectorPluginCallbacks.getPluginHelper();
+        infoDetectorPluginCallbacks.setInfoDetectorPluginAuthor("Xm17");
+        infoDetectorPluginCallbacks.setInfoDetectorPluginName("info插件");
+        infoDetectorPluginCallbacks.setInfoDetectorPluginVersion("0.0.1");
+        infoDetectorPluginCallbacks.setInfoDetectorPluginDescription("InfoPlugin");
 
-        callbacks.setInfoDetectorPluginAuthor("Xm17");
-        callbacks.setInfoDetectorPluginName("插件名称");
-        callbacks.setInfoDetectorPluginVersion("v0.1.0");
-        callbacks.setInfoDetectorPluginDescription("插件描述");
+        // 注册信息收集插件
+        infoDetectorPluginCallbacks.registerInfoDetector(new ArrayList<InfoDetector>(){{
+            add(new Info());
+        }});
 
-        List<InfoDetector> infoDetectors = new ArrayList<>();
-
-
-        //注册单个网站的url扫描接口
-        infoDetectors.add(new Info());
-
-        callbacks.registerInfoDetector(infoDetectors);
     }
 }
