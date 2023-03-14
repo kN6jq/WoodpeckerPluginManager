@@ -19,22 +19,27 @@
   </properties>
 
   <dependencies>
+    <!-- https://mvnrepository.com/artifact/me.gv7.woodpecker/woodpecker-requests -->
     <dependency>
       <groupId>me.gv7.woodpecker</groupId>
       <artifactId>woodpecker-requests</artifactId>
-      <version>0.1.0</version>
+      <version>0.2.1</version>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/me.gv7.woodpecker/woodpecker-tools -->
     <dependency>
       <groupId>me.gv7.woodpecker</groupId>
       <artifactId>woodpecker-tools</artifactId>
-      <version>0.1.0.beta1</version>
+      <version>0.1.1</version>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/me.gv7.woodpecker/woodpecker-sdk -->
     <dependency>
       <groupId>me.gv7.woodpecker</groupId>
       <artifactId>woodpecker-sdk</artifactId>
-      <version>0.2.1</version>
-      <scope>compile</scope>
+      <version>0.3.0</version>
     </dependency>
+
   </dependencies>
 
   <build>
