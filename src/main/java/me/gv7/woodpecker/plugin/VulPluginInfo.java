@@ -15,6 +15,7 @@ public class VulPluginInfo implements IVulPlugin{
     public void VulPluginMain(IVulPluginCallbacks iVulPluginCallbacks) {
         this.callbacks = iVulPluginCallbacks;
         this.pluginHelper = iVulPluginCallbacks.getPluginHelper();
+        iVulPluginCallbacks.setVulName("vul插件");
         iVulPluginCallbacks.setVulPluginName("vul插件");
         iVulPluginCallbacks.setVulPluginAuthor("Xm17");
         iVulPluginCallbacks.setVulPluginVersion("0.0.1");
